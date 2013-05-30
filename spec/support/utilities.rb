@@ -1,9 +1,11 @@
-# Define a method to shorten the page titles used in our tests. 
-def full_title (page_title)
-	base_title = "Ruby on Rails Tutorial Sample App"
-	if page_title.empty?
-		base_title
-	else 
-		"#{base_title} | #{page_title}"
-	end
-end
+# # Define a method to shorten the page titles used in our tests. 
+# def full_title (page_title)
+# 	base_title = "Ruby on Rails Tutorial Sample App"
+# 	if page_title.empty?
+# 		base_title
+# 	else 
+# 		"#{base_title} | #{page_title}"
+# 	end
+# end
+
+include ApplicationHelper
