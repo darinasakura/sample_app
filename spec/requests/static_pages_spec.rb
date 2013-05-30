@@ -10,37 +10,41 @@ require 'spec_helper'
 #   end
 # end
 describe "Static pages" do
+	subject {page}
+	let (:base_title) {"Ruby on Rails Tutorial Sample App | "}
+
 	describe "Home page" do
-		it "should have the h1 'Sample App'" do
-			visit '/static_pages/home'
-			page.should have_selector('h1', :text => 'Sample App')
-		end
-		it "should have the title 'Home'" do
-			visit '/static_pages/home'
-			page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Home")
-		end
+		before {visit root_path} # declare path
+		
+		it {should have_selector('h1', text: 'Sample App')}
+		it {should have_selector('title', text: full_title(''))} #full_title is a method created in spec/support/utilities.rb
+		it {should_not have_selector('title', text: full_title('Home'))}
+
 	end
 	# ------------- Help Page -------------
 	describe "Help page" do
-		it "should have the h1 'Help'" do
-			visit '/static_pages/help'
-			page.should have_selector('h1', :text => 'Help')
-		end
-		it "should have the title 'Help'" do
-			visit '/static_pages/help'
-			page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Help")
-		end
+		before {visit help_path}
+
+		it {should have_selector('h1', text: 'Help')}
+		it {should have_selector('title', text: full_title('Help'))} 
+		
 	end
 	# ------------- About Page -------------
 	describe "About page" do
-		it "should have the h1 'About Us'" do
-			visit '/static_pages/about'
-			page.should have_selector('h1', :text => 'About Us')
-		end
-		it "should have the title 'Help'" do
-			visit '/static_pages/about'
-			page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | About Us")
-		end
+		before {visit about_path}
+		
+		it {should have_selector('h1', text: 'About Us')}
+		it {should have_selector('title', text: full_title('About Us'))} 
+		
 	end
+	# ------------- Contact Page -------------
+	describe "Contact page" do
+		before {visit contact_path}
+		
+		it {should have_selector('h1', text: 'Contact')}
+		it {should have_selector('title', text: full_title('Contact'))} 
+		
+	end
+
 end
 
